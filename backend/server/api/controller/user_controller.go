@@ -67,9 +67,10 @@ func (userController *UserController) HandleGetAllMyServers(writer http.Response
 			channels = append(channels, channel.ToValue())
 		}
 
-		var userObjects, userError = userController.dbManager.GetAllUsersInServer(int(object.ID))
+		//var userObjects, userError = userController.dbManager.GetAllUsersInServer(int(object.ID))
+		var userObjects, userError = userController.dbManager.GetAllUsersInServer(int(1))
 		if userError != nil {
-			log.Print("failed to load users: ", error)
+			log.Print("failed to load GetAllUsersInServer:  userError --> ", userError)
 			http.Error(writer, "internal error", http.StatusInternalServerError)
 			return
 		}

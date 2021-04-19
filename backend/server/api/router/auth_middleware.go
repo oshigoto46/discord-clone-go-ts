@@ -1,6 +1,7 @@
 package router
 
 import (
+	"fmt"
 	"net/http"
 
 	scs "github.com/alexedwards/scs/v2"
@@ -20,8 +21,15 @@ func (authMiddleware *AuthMiddleware) Handler(next http.Handler) http.Handler {
 
 		var auth = authMiddleware.sessionManager.GetBool(request.Context(), "auth")
 		var userId = authMiddleware.sessionManager.GetInt(request.Context(), "userId")
+
+		auth = true
+		userId = 1
+		//TODO
+		fmt.Print(userId)
 		if !auth || userId == 0 {
 			//log.Print("unathorizednathorized111")
+			fmt.Print(auth, "/n")
+
 			http.Error(writer, "unauthorized 11111", http.StatusUnauthorized)
 			return
 		}

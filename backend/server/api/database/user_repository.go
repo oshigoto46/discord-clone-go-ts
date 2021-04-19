@@ -2,6 +2,7 @@ package database
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/kntkymt/discord_clone_server/server/model/db"
 )
@@ -38,7 +39,13 @@ func (dbManager *DBManager) GetAllUsers() ([]db.User, error) {
 
 func (dbManager *DBManager) GetAllUsersInServer(id int) ([]db.User, error) {
 	// 中間テーブル取得
-	var chatServerUsers, error = dbManager.GetAllChatServerUserByServer(id)
+	// TODO
+	id = 1
+	var chatServerUsers, error = dbManager.GetAllChatServerUserByServer(1)
+	fmt.Print("\n-------<chatServerUsers>----\n")
+	fmt.Print(chatServerUsers)
+	fmt.Print("\n--------<chatServerUsers>----\n")
+	// TODO
 	if error != nil {
 		return nil, error
 	}
@@ -46,8 +53,12 @@ func (dbManager *DBManager) GetAllUsersInServer(id int) ([]db.User, error) {
 	// 中間テーブルからUserを取得
 	var objects []db.User
 	for _, chatServerUser := range chatServerUsers {
+		//var user, getError = dbManager.GetUser(int(chatServerUser.UserID))
+		chatServerUser.UserID = 1
 		var user, getError = dbManager.GetUser(int(chatServerUser.UserID))
-
+		fmt.Print("\ndbManager.GetUser")
+		fmt.Print(user)
+		fmt.Print("dbManager.GetUser\n")
 		// とりあえず1個でもミスったらエラーに
 		if getError != nil {
 			return nil, getError
@@ -55,6 +66,9 @@ func (dbManager *DBManager) GetAllUsersInServer(id int) ([]db.User, error) {
 
 		objects = append(objects, *user)
 	}
+	fmt.Print("\n-------<objects>----\n")
+	fmt.Print(objects)
+	fmt.Print("\n--------<objects>----\n")
 
 	return objects, nil
 }

@@ -1,6 +1,10 @@
 package database
 
-import "github.com/kntkymt/discord_clone_server/server/model/db"
+import (
+	"fmt"
+
+	"github.com/kntkymt/discord_clone_server/server/model/db"
+)
 
 func (dbManager *DBManager) GetAllChatServerUserByUser(id int) ([]db.ChatServerUser, error) {
 	var chatServerUsers []db.ChatServerUser
@@ -14,7 +18,13 @@ func (dbManager *DBManager) GetAllChatServerUserByUser(id int) ([]db.ChatServerU
 
 func (dbManager *DBManager) GetAllChatServerUserByServer(id int) ([]db.ChatServerUser, error) {
 	var chatServerUsers []db.ChatServerUser
-	var _, error = dbManager.DBMap.Select(&chatServerUsers, "select * from chat_server_user WHERE chat_server_id = ? order by id", id)
+	//var _, error = dbManager.DBMap.Select(&chatServerUsers, "select * from chat_server_user WHERE chat_server_id = ? order by id", id)
+	var _, error = dbManager.DBMap.Select(&chatServerUsers, "select * from chat_server_user WHERE chat_server_id = 1 order by id")
+	// TO id
+	fmt.Print("\nGetAllChatServerUserByServer👇\n")
+	fmt.Print(chatServerUsers)
+	fmt.Print("\nGetAllChatServerUserByServer👆\n")
+
 	if error != nil {
 		return nil, error
 	}

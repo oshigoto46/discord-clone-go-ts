@@ -24,7 +24,7 @@ func (dbManager *DBManager) GetChatServer(id int) (*db.ChatServer, error) {
 
 func (dbManager *DBManager) GetAllServersInUser(id int) ([]db.ChatServer, error) {
 	// 中間テーブル取得
-	var chatServerUsers, error = dbManager.GetAllChatServerUserByUser(id)
+	var chatServerUsers, error = dbManager.GetAllChatServerUserByUser(1) // TODO id
 	if error != nil {
 		return nil, error
 	}

@@ -50,9 +50,10 @@ func (chatServerController *ChatServerController) HandleGet(writer http.Response
 		channels = append(channels, channel.ToValue())
 	}
 
-	var userObjects, userError = chatServerController.dbManager.GetAllUsersInServer(id)
+	var userObjects, userError = chatServerController.dbManager.GetAllUsersInServer(1)
+	//TODO id = 1
 	if userError != nil {
-		log.Print("failed to load users: ", userError)
+		log.Print("failed to load users 222: ", userError)
 		http.Error(writer, "internal error", http.StatusInternalServerError)
 		return
 	}
