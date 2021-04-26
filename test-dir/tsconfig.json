@@ -10,8 +10,12 @@
   ],
   "files": [
     "src/user.ts",
+    "../../client/src/component/Text",
     "src/user-manager.ts",
     "src/user-utils.ts",
-    "test/user-utils.test.ts"
+    "src/arrayExtension.ts",
+    "test/user-utils.test.ts",
+    "test/arrayExtension.test.ts",
+    "test/render.test.ts"
   ]
 }

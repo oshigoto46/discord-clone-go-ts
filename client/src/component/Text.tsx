@@ -10,7 +10,7 @@ type Props = {
   fontSize?: number;
 }
 
-export const Text: FunctionComponent<Props> = (props) => {
+ export const Text: FunctionComponent<Props> = (props) => {
 
   const style = css`
     color: ${props.color ?? '#000000'};
@@ -20,3 +20,5 @@ export const Text: FunctionComponent<Props> = (props) => {
 
   return <Box className={props.className} css={style}>{props.children}</Box>;
 };
+
+export default Text;
