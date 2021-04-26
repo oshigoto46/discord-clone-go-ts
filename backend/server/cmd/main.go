@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-
+    "github.com/oshigoto46/discord-clone-go-ts/backend/small-server"
 	"github.com/kntkymt/discord_clone_server/server/api/database"
 	"github.com/kntkymt/discord_clone_server/server/api/router"
 

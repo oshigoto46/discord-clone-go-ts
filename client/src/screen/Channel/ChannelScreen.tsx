@@ -32,7 +32,12 @@ type Props = {
 export const ChannelScreen: FunctionComponent<Props> = (props) => {
   const { channelId } = useParams();
   const me = useMe();
+  
   const messageCreater = usePOST<Message>(`/private/channels/${channelId}/messages`);
+  //http://localhost/private/channels/1/messages
+  // messages
+  //[{"id":6,"content":"aa","user":{"id":3,"name":"fd","createTime":"2021-04-19T12:50:12Z",
+  // "updateTime":"2021-04-19T12:50:12Z"},"createTime":"2021-04-19T12:55:25Z","updateTime":"2021-04-19T12:55:25Z"}]
   const messages = useGETArray<Message>(`/private/channels/${channelId}/messages`);
   const { width, height } = useWindowDimensions();
 
@@ -85,7 +90,7 @@ export const ChannelScreen: FunctionComponent<Props> = (props) => {
         <TextField
           css={styles.textField}
           style={{marginLeft: 8, width: width - 240 - 240 - 70 - 44 - 32 - 32}}
-          placeholder={'メッセージを送信'}
+          placeholder={'メッセージを送信222'}
           variant={'outlined'}
           size={'small'}
           value={text}
