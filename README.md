@@ -1,3 +1,5 @@
+= This is the fork of https://github.com/kntkymt/discord_clone_golang
+
 # discord_clone_golang
 ## Overview
 - [Discord](https://discord.com/) のReact + Golang clone 
